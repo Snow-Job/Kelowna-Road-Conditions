@@ -25,7 +25,18 @@
     <!-- checkbox list javascript functions -->
     <script src="js/listFunc.js"></script>
 
-
+    <!-- google maps -->
+    <script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: 49.8801, lng: -119.4436},
+          zoom: 12
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
 
     <!-- resizes header when you scroll down -->
     <script>
@@ -119,7 +130,7 @@
       <h3 class="text-center" style="color:white">Navigate the Google Map:</h3>
       <br>
       <div class="google-maps">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d164477.2564417612!2d-119.59474512615797!3d49.89960812697432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537d8cb6e3c730b3%3A0x4ef8e53ddab4c4f7!2sKelowna%2C+BC!5e0!3m2!1sen!2sca!4v1455680052493" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+          <div id="map"></div>
       </div>
 
 
