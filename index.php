@@ -38,8 +38,8 @@
                 if (distanceY > shrinkOn) {
                     classie.add(header,"smaller");
                     var image = document.getElementById('imgLogo');
-                    image.src = 'img/logo2.png';
-                    image.style.width = '70px';
+                    image.src = 'img/logoSmall.png';
+                    image.style.width = '150px';
                     image.style.padding = '5px 0 0 0';
                 } else {
                     if (classie.has(header,"smaller")) {
@@ -66,6 +66,7 @@
           <section>
               <div class="container">
 								<br>
+                <br>
                   <h1>Current Road Conditions: Kelowna</h1>
                   <p>Use the filters below to toggle different layers on the map.</p>
 									<p>
@@ -76,10 +77,10 @@
             <section class="color">
           <div class="container" style="margin-top:20px;">
 	<div class="row">
-    <div class="col-xs-12 col-sm-4 col-md-4">
+    <div class="col-xs-12 col-sm-12 col-md-4">
       <h3 class="text-center" style="color:white">Select a Filter Below:</h3>
       <br>
-        <div class="well" style="max-height: 800px;overflow: auto;" id="sideContent">
+        <div class="well" style="max-height: 800px; overflow: auto;" id="sideContent">
 
           <br>
           <ul id="check-list-box" class="list-group checked-list-box">
@@ -103,22 +104,25 @@
                 <li class="list-group-item"><img src="img/pinkLine.png">&nbsp Construction - Current Projects</li>
                 <li class="list-group-item"><img src="img/yellowLine.png">&nbsp Events - Road Closed</li>
                 <br />
-          </ul>
+
           <span style="display: block !important; width: 320px; text-align: center; font-family: sans-serif; font-size: 12px; margin: 20px auto 0 auto;"><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:00000.1.71203&bannertypeclick=wu_clean2day" title="Kelowna, British Columbia Weather Forecast" target="_blank"><img src="http://weathersticker.wunderground.com/weathersticker/cgi-bin/banner/ban/wxBanner?bannertype=wu_clean2day_metric_cond&airportcode=CYLW&ForcedCity=Kelowna&ForcedState=Canada&wmo=71203&language=EN" alt="Find more about Weather in Kelowna, CA" width="300" /></a><br><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:00000.1.71203&bannertypeclick=wu_clean2day" title="Get latest Weather Forecast updates" style="font-family: sans-serif; font-size: 12px; color: #000;" target="_blank">Click for weather forecast</a></span>
+          </ul>
         </div>
         <pre id="display-json"></pre>
 
     </div>
 
-    <div class="col-xs-12 col-sm-8 col-md-8">
+    <div class="col-xs-12 col-sm-12 col-md-8">
+
       <!-- <div id="map" style="margin: 0 auto 0 auto;"></div> -->
-      <!-- <br> -->
+
       <h3 class="text-center" style="color:white">Navigate the Google Map:</h3>
       <br>
-      <!-- <br> -->
       <div class="google-maps">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d164477.2564417612!2d-119.59474512615797!3d49.89960812697432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537d8cb6e3c730b3%3A0x4ef8e53ddab4c4f7!2sKelowna%2C+BC!5e0!3m2!1sen!2sca!4v1455680052493" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-</div>
+      </div>
+
+
     </div>
 
 

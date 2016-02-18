@@ -94,6 +94,11 @@ a:hover {
   margin: 0 auto;
   padding: 0 30px; }
 
+.headDiv {
+  width: 80%;
+  margin: 0 auto;
+  padding: 0 30px; }
+
 section {
   padding: 60px 0; }
   section h1 {
@@ -467,7 +472,6 @@ header {
 
 
 /*google maps styling*/
-
 .google-maps {
         position: relative;
         padding-bottom: 75%; // This is the aspect ratio
@@ -476,8 +480,8 @@ header {
     }
     .google-maps iframe {
         position: absolute;
-        top: 0;
-        left: 0;
+        /*top: 0;
+        left: 0;*/
         width: 100% !important;
         height: 100% !important;
     }

@@ -1,11 +1,11 @@
 
 
 <header>
-    <div class="container clearfix">
+    <div class="headDiv clearfix">
         <h1 id="logo">
             <img id="imgLogo" src="img/logo.png"></img>
         </h1>
-        
+
         <nav>
 
             <a href="http://www.kelowna.ca/"><button type="button" class="btn btn-default" style="background-color: #fdb813; border-color:#fdb813; color: white;"><b>Home</b></button></a>
