@@ -2,7 +2,7 @@
   <div style="width: 80%; margin: 0 auto 0 auto;">
   <div class="footer-left">
 
-    <img src="img/logo.png" style="width: 100px; "></img>
+    <img src="images/logo.png" style="width: 100px; "></img>
 
     <!-- <p class="footer-links">
       <a href="#">Home</a>

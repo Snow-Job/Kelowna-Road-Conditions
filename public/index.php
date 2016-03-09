@@ -5,7 +5,6 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 		<title>City of Kelowna Road Mapper</title>
-
 		<!-- Bootstrap fonts -->
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<!-- Latest compiled and minified CSS -->
@@ -19,51 +18,19 @@
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <!-- our external style sheet -->
 		<link rel="stylesheet" href="css/stylesheet.css">
-
     <!-- header javascript functions -->
     <script src="js/headerFunc.js"></script>
     <!-- checkbox list javascript functions -->
     <script src="js/listFunc.js"></script>
-
-
     <!-- google maps -->
     <script src="js/mapFunc.js"></script>
-
-
-    <!-- resizes header when you scroll down -->
-    <script>
-        function init() {
-            window.addEventListener('scroll', function(e){
-
-                var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-                    shrinkOn = 100,
-                    header = document.querySelector("header");
-                if (distanceY > shrinkOn) {
-                    classie.add(header,"smaller");
-                    var image = document.getElementById('imgLogo');
-                    image.src = 'img/logoSmall.png';
-                    image.style.width = '150px';
-                    image.style.padding = '5px 0 0 0';
-                } else {
-                    if (classie.has(header,"smaller")) {
-                    classie.remove(header,"smaller");
-                    var image = document.getElementById('imgLogo');
-                    image.src = 'img/logo.png';
-                    image.style.width = '150px';
-                    image.style.padding = '20px 0 0 0';
-                    }
-                }
-            });
-        }
-        window.onload = init();
-
-    </script>
-
-	</head>
+		<!-- header resize on scroll function -->
+		<script src="js/headerScroll.js"></script>
+		</head>
 
 <body>
   <div id="wrapper">
-	<?php include("include/header.php");?>
+	<?php include("../application/views/header.php");?>
   <div id="main">
       <div id="content">
           <section>
@@ -101,11 +68,11 @@
             <h3 class="text-center" style="color:black">Legend:</h3>
             <br>
           <ul class="list-group">
-                <li class="list-group-item"><img src="img/greenLine.png">&nbsp Snow - Cleared Roads</li>
-                <li class="list-group-item"><img src="img/redLine.png">&nbsp Snow - Not Cleared</li>
-                <li class="list-group-item"><img src="img/blueLine.png">&nbsp Construction - Road Closed</li>
-                <li class="list-group-item"><img src="img/pinkLine.png">&nbsp Construction - Current Projects</li>
-                <li class="list-group-item"><img src="img/yellowLine.png">&nbsp Events - Road Closed</li>
+                <li class="list-group-item"><img src="images/greenLine.png">&nbsp Snow - Cleared Roads</li>
+                <li class="list-group-item"><img src="images/redLine.png">&nbsp Snow - Not Cleared</li>
+                <li class="list-group-item"><img src="images/blueLine.png">&nbsp Construction - Road Closed</li>
+                <li class="list-group-item"><img src="images/pinkLine.png">&nbsp Construction - Current Projects</li>
+                <li class="list-group-item"><img src="images/yellowLine.png">&nbsp Events - Road Closed</li>
                 <br />
 
           <span style="display: block !important; width: 320px; text-align: center; font-family: sans-serif; font-size: 12px; margin: 20px auto 0 auto;"><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:00000.1.71203&bannertypeclick=wu_clean2day" title="Kelowna, British Columbia Weather Forecast" target="_blank"><img src="http://weathersticker.wunderground.com/weathersticker/cgi-bin/banner/ban/wxBanner?bannertype=wu_clean2day_metric_cond&airportcode=CYLW&ForcedCity=Kelowna&ForcedState=Canada&wmo=71203&language=EN" alt="Find more about Weather in Kelowna, CA" width="300" /></a><br><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:00000.1.71203&bannertypeclick=wu_clean2day" title="Get latest Weather Forecast updates" style="font-family: sans-serif; font-size: 12px; color: #000;" target="_blank">Click for weather forecast</a></span>
@@ -149,6 +116,7 @@
 
 
   </div><!-- /#wrapper -->
-  <?php include("include/footer.php");?>
+  <?php include("../application/views/footer.php");?>
 </body>
+<script>window.onload = init();</script>
 </html>

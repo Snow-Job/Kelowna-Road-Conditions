@@ -10,7 +10,7 @@ function initMap() {
   //query csv file named "text.csv" and process it
       $.ajax({
           type:"GET",
-          url:"data/test.csv",
+          url:"../data/test.csv",
           dataType:"text",
           success:function(data){
               processData(data);}

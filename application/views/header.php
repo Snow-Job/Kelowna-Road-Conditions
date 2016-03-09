@@ -3,7 +3,7 @@
 <header>
     <div class="headDiv clearfix">
         <h1 id="logo">
-            <img id="imgLogo" src="img/logo.png"></img>
+            <img id="imgLogo" src="images/logo.png"></img>
         </h1>
 
         <nav>
