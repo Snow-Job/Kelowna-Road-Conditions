@@ -23,7 +23,7 @@
     <!-- checkbox list javascript functions -->
     <script src="js/listFunc.js"></script>
     <!-- google maps -->
-    <script src="js/mapFunc.js"></script>
+		<script src="js/mapFunc.js"></script>
 		<!-- header resize on scroll function -->
 		<script src="js/headerScroll.js"></script>
 		</head>
@@ -117,6 +117,8 @@
 
   </div><!-- /#wrapper -->
   <?php include("../application/views/footer.php");?>
+
+
 </body>
 <script>window.onload = init();</script>
 </html>
