@@ -14,7 +14,6 @@ function initMap() {
           type:"GET",
           url:"../application/views/dataUpdate.php",
           success:function(data){
-            console.log(data);
             processData(data);}
       });
   }
@@ -42,7 +41,6 @@ function initMap() {
           segment=plowRoute[ii].slice(start,end);
           start+=99;
           end=start+100;
-          if (segment.length>0) {
             $.get('https://roads.googleapis.com/v1/snapToRoads', {
               interpolate: true,
               key:'AIzaSyC-qqLqVzYXPH3qTDrguSFVTV07Bk59lNI',
@@ -63,7 +61,6 @@ function initMap() {
               });
               plowPath.setMap(map);
             });
-          }
         }
       }
     }
