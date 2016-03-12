@@ -1,3 +1,4 @@
+window.onload = init();
 function init() {
     window.addEventListener('scroll', function(e){
 
