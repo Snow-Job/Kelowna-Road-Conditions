@@ -1,3 +1,7 @@
+/**
+ * Loads and initializes the filter checklist
+ * @author James Rogers
+ */
 $(function () {
     $('.list-group.checked-list-box .list-group-item').each(function () {
 
@@ -29,7 +33,10 @@ $(function () {
         });
 
 
-        // Actions
+        /**
+         * Updates the display based on checked or unchecked state
+         * @author James Rogers
+         */
         function updateDisplay() {
             var isChecked = $checkbox.is(':checked');
 
@@ -64,6 +71,7 @@ $(function () {
             }
         }
         initList();
+
     });
 
     $('#get-checked-data').on('click', function(event) {
@@ -73,6 +81,23 @@ $(function () {
             checkedItems[counter] = $(li).text();
             counter++;
         });
-        $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
+
+        //loads the relevant script given checkbox values submitted
+        if (checkedItems[0] == "Snow: Cleared Roads") {
+          loadScript();
+        }
+        else {
+          initMap2();
+        }
+        //TODO next sprint implement the other filter data, put this in a loop
+        // else if (checkedItems[0] == "Construction: Road Closures") {
+        //   loadScript2();
+        // }
+        // else if (checkedItems[0] == "Events: Closures") {
+        //   loadScript3();
+        // }
+
+
+        // $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
     });
 });
