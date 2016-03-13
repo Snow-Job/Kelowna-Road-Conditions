@@ -1,7 +1,12 @@
-window.onload = loadScript();
+// window.onload = loadScript();
+
 var plowRoute = [];
 var truckRoute = [];
-var color = ["#FF6600", "#FF3300", "#FF0000", "#CC3300", "#CC0033", "#FF3366", "#FF0033", "#FF0066", "#CC0099", "#9900CC", "#6600FF", "#3300FF", "#0033CC", "#3366FF", "#0099FF", "#33CCFF", "#00CC99", "#00FF66", "#FFCC33", "#FF9900", "#FFCC00", "#CC9900", "#99CC00", "CCFF00"];
+var color = ["#FF6600", "#FF3300", "#FF0000", "#CC3300", "#CC0033", "#FF3366",
+  "#FF0033", "#FF0066", "#CC0099", "#9900CC", "#6600FF", "#3300FF",
+  "#0033CC", "#3366FF", "#0099FF", "#33CCFF", "#00CC99", "#00FF66",
+  "#FFCC33", "#FF9900", "#FFCC00", "#CC9900", "#99CC00", "#CCFF00"
+];
 
 function initMap() {
   var mapDiv = document.getElementById('map');
@@ -12,13 +17,37 @@ function initMap() {
     },
     zoom: 12
   });
-  //query csv file named "text.csv" and process it
+  //query database and process it
   $.ajax({
     type: "GET",
     url: "../application/views/dataUpdate.php",
     success: function(data) {
       processData(data);
     }
+  });
+
+  //TODO enable this when a traffic layer is selected
+  // var trafficLayer = new google.maps.TrafficLayer();
+  // trafficLayer.setMap(map);
+
+  //TODO enable this when a bike route layer is selected
+  // var bikeLayer = new google.maps.BicyclingLayer();
+  //   bikeLayer.setMap(map);
+
+}
+
+/**
+ * initMap2 - this is the original blank map that loads centered on Kelowna
+ * @author James Rogers
+ */
+function initMap2() {
+  var mapDiv = document.getElementById('map');
+  map = new google.maps.Map(mapDiv, {
+    center: {
+      lat: 49.8801,
+      lng: -119.4436
+    },
+    zoom: 12
   });
 }
 
@@ -50,7 +79,7 @@ function processData(data) {
       end = start + 100;
       $.get('https://roads.googleapis.com/v1/snapToRoads', {
         interpolate: true,
-        key: 'AIzaSyC-qqLqVzYXPH3qTDrguSFVTV07Bk59lNI',
+        key: 'AIzaSyA7Ka8FkNjbSUzPyg0OfMqDqHw257cbWSQ',
         path: segment.join('|')
       }, function(data) {
         var snappedCoordinates = [];
@@ -104,8 +133,10 @@ function loadScript() {
   script.src = "http://maps.googleapis.com/maps/api/js?callback=initMap";
   document.head.appendChild(script);
 }
+
 /**
  * Animate an icon along a polyline
+ * @author James Rogers
  * @param {Object} polyline The line to animate the icon along
  */
 function animateCircle(polyline) {

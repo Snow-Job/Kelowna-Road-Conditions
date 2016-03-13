@@ -63,9 +63,9 @@
                     <br>
                     <ul id="check-list-box" class="list-group checked-list-box">
                       <li class="list-group-item">Snow: Cleared Roads</li>
-                      <li class="list-group-item">Snow: Not Cleared</li>
+                      <!-- <li class="list-group-item">Snow: Not Cleared</li> -->
                       <li class="list-group-item">Construction: Road Closures</li>
-                      <li class="list-group-item">Construction: Current Projects</li>
+                      <!-- <li class="list-group-item">Construction: Current Projects</li> -->
                       <li class="list-group-item">Events: Closures</li>
                     </ul>
                     <br />
@@ -76,9 +76,9 @@
                     <br>
                     <ul class="list-group">
                       <li class="list-group-item"><img src="images/greenLine.png">&nbsp Snow - Cleared Roads</li>
-                      <li class="list-group-item"><img src="images/redLine.png">&nbsp Snow - Not Cleared</li>
+                      <!-- <li class="list-group-item"><img src="images/redLine.png">&nbsp Snow - Not Cleared</li> -->
                       <li class="list-group-item"><img src="images/blueLine.png">&nbsp Construction - Road Closed</li>
-                      <li class="list-group-item"><img src="images/pinkLine.png">&nbsp Construction - Current Projects</li>
+                      <!-- <li class="list-group-item"><img src="images/pinkLine.png">&nbsp Construction - Current Projects</li> -->
                       <li class="list-group-item"><img src="images/yellowLine.png">&nbsp Events - Road Closed</li>
                       <br />
                       <span style="display: block !important; width: 320px; text-align: center; font-family: sans-serif; font-size: 12px; margin: 20px auto 0 auto;"><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:00000.1.71203&bannertypeclick=wu_clean2day" title="Kelowna, British Columbia Weather Forecast" target="_blank"><img src="http://weathersticker.wunderground.com/weathersticker/cgi-bin/banner/ban/wxBanner?bannertype=wu_clean2day_metric_cond&airportcode=CYLW&ForcedCity=Kelowna&ForcedState=Canada&wmo=71203&language=EN" alt="Find more about Weather in Kelowna, CA" width="300" /></a><br><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:00000.1.71203&bannertypeclick=wu_clean2day" title="Get latest Weather Forecast updates" style="font-family: sans-serif; font-size: 12px; color: #000;" target="_blank">Click for weather forecast</a></span>
@@ -87,12 +87,12 @@
                   <pre id="display-json"></pre>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-8">
-                  <!-- <div id="map" style="margin: 0 auto 0 auto;"></div> -->
                   <h3 class="text-center" style="color:white">Navigate the Google Map:</h3>
                   <br>
-                  <div class="google-maps">
-                    <div id="map"></div>
-                  </div>
+                  <!-- <div class="google-maps"> -->
+                    <div id="map" class="basic"></div>
+										<!-- <button class="btn btn-primary" id="map_toggler">View Fullscreen</button> -->
+                  <!-- </div> -->
                 </div>
               </div>
               <!-- row -->
@@ -116,5 +116,12 @@
   <!-- /#wrapper -->
   <?php include '../application/views/footer.php';?>
 </body>
+<script>
+//load the blank map
+initMap2();
 
+// $("#map_toggler").click(function() {
+//   $("#map").toggleClass("fullscreen")
+// });
+</script>
 </html>
