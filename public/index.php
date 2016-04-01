@@ -61,17 +61,30 @@
                   <br>
                   <div class="well" style="max-height: 800px; overflow: auto;" id="sideContent">
                     <br>
-                    <ul id="check-list-box" class="list-group checked-list-box">
-                      <li class="list-group-item">Snow: Cleared Roads</li>
+                    <ul id="check-list-box" class="list-group checked-list-box" >
+                      <li class="list-group-item" >Snow Cleared Paths: No Sub-Layers</li>
                       <!-- <li class="list-group-item">Snow: Not Cleared</li> -->
-                      <li class="list-group-item">Construction: Road Closures</li>
+                      <div class="col-xs-6 col-sm-6 col-md-6" style="padding:0;">
+                      <li class="list-group-item">With Current Traffic Layer</li>
+                      </div>
                       <!-- <li class="list-group-item">Construction: Current Projects</li> -->
-                      <li class="list-group-item">Events: Closures</li>
+                        <div class="col-xs-6 col-sm-6 col-md-6" style="padding-left:0; padding-right:0;">
+                      <li class="list-group-item">With Bike Path Layer</li>
+                    </div>
                     </ul>
+                    <br />
+                    <br />
                     <br />
                     <button class="btn btn-primary col-xs-12" id="get-checked-data">Update</button>
                     <br>
                     <br>
+                    <div class="timeFilters" style="text-align: center; display: none;">
+                      <button type="button" name="pastHour" class="btn btn-success" onclick="timeQuery(60)">Past Hour</button>
+                      <button type="button" name="past2Hour" class="btn btn-success" onclick="timeQuery(120)">Past 2 Hours</button>
+                      <button type="button" name="past3Hour" class="btn btn-success" onclick="timeQuery(180)">Past 3 Hours</button>
+                    </div>
+                    <br />
+                    <br />
                     <h3 class="text-center" style="color:black">Legend:</h3>
                     <br>
                     <ul class="list-group">

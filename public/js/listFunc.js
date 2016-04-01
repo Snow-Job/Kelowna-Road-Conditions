@@ -1,3 +1,4 @@
+
 /**
  * Loads and initializes the filter checklist
  * @author James Rogers
@@ -19,7 +20,7 @@ $(function () {
                 }
             };
 
-        $widget.css('cursor', 'pointer')
+        // $widget.css('cursor', 'pointer');
         $widget.append($checkbox);
 
         // Event Handlers
@@ -56,6 +57,7 @@ $(function () {
             }
         }
 
+
         // Initialization
         function initList() {
 
@@ -83,21 +85,41 @@ $(function () {
         });
 
         //loads the relevant script given checkbox values submitted
-        if (checkedItems[0] == "Snow: Cleared Roads") {
-          loadScript();
+        if (checkedItems[0] == "Snow Cleared Paths: No Sub-Layers") {
+          console.log("SnoCleared");
+          initMap();
+          $('.timeFilters').show();
+          clearStyling();
         }
-        else {
-          initMap2();
+        if (checkedItems[0] == "With Current Traffic Layer") {
+          console.log("traffic");
+          initMap('traffic');
+          clearStyling();
         }
-        //TODO next sprint implement the other filter data, put this in a loop
-        // else if (checkedItems[0] == "Construction: Road Closures") {
-        //   loadScript2();
-        // }
-        // else if (checkedItems[0] == "Events: Closures") {
-        //   loadScript3();
-        // }
-
-
-        // $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
+        if (checkedItems[0] == "With Bike Path Layer"){
+          console.log("bike");
+          initMap('bike');
+          clearStyling();
+        }
     });
+
+    function clearStyling() {
+      $('.list-group-item').removeClass('list-group-item-primary').removeClass('active').addClass('disabled').attr('cursor', 'not allowed');
+      $('#get-checked-data').removeClass('btn-primary').addClass('btn-danger').html('Clear').attr('onclick', 'clearList()');
+      $('.state-icon').removeClass('glyphicon-check').addClass('glyphicon-unchecked');
+      $('input[type="checkbox"]').prop('disabled', true);
+      // updateDisplay();
+    }
 });
+
+function timeQuery(range) {
+
+}
+
+function clearList() {
+  initMap2();
+  console.log("clear");
+  $('.list-group-item').removeClass('disabled');
+  $('.timeFilters').hide();
+  $('#get-checked-data').removeClass('btn-danger').addClass('btn-primary').html('Update').attr('onclick', '');
+}

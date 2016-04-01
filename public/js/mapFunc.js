@@ -8,7 +8,7 @@ var color = ["#FF6600", "#FF3300", "#FF0000", "#CC3300", "#CC0033", "#FF3366",
   "#FFCC33", "#FF9900", "#FFCC00", "#CC9900", "#99CC00", "#CCFF00"
 ];
 
-function initMap() {
+function initMap(layer) {
   var mapDiv = document.getElementById('map');
   map = new google.maps.Map(mapDiv, {
     center: {
@@ -20,19 +20,21 @@ function initMap() {
   //query database and process it
   $.ajax({
     type: "GET",
-    url: "../application/views/dataUpdate.php",
+    url: "../application/model/dataUpdate.php",
     success: function(data) {
       processData(data);
     }
   });
 
-  //TODO enable this when a traffic layer is selected
-  // var trafficLayer = new google.maps.TrafficLayer();
-  // trafficLayer.setMap(map);
+  if (layer == 'traffic') {
+    var trafficLayer = new google.maps.TrafficLayer();
+    trafficLayer.setMap(map);
+  }
 
-  //TODO enable this when a bike route layer is selected
-  // var bikeLayer = new google.maps.BicyclingLayer();
-  //   bikeLayer.setMap(map);
+  if (layer == 'bike') {
+    var bikeLayer = new google.maps.BicyclingLayer();
+    bikeLayer.setMap(map);
+  }
 
 }
 
@@ -49,6 +51,7 @@ function initMap2() {
     },
     zoom: 12
   });
+
 }
 
 function processData(data) {
@@ -127,12 +130,12 @@ function parseRow(str) {
   return entries;
 }
 
-function loadScript() {
-  var script = document.createElement("script");
-  script.type = "text/javascript";
-  script.src = "http://maps.googleapis.com/maps/api/js?callback=initMap";
-  document.head.appendChild(script);
-}
+// function loadScript() {
+//   var script = document.createElement("script");
+//   script.type = "text/javascript";
+//   script.src = "http://maps.googleapis.com/maps/api/js?callback=initMap";
+//   document.head.appendChild(script);
+// }
 
 /**
  * Animate an icon along a polyline

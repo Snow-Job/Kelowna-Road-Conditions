@@ -1,7 +1,5 @@
 <?php
-
-#connect to db
-$mysqli = mysqli_connect('cosc304.ok.ubc.ca', 'mjoseph', '15057136', 'db_mjoseph');
+$db = new database();
 
 #get range of times to query on db based on current time of day then format
 date_default_timezone_set('PST8PDT');
@@ -10,11 +8,10 @@ $timeBefore = date('Y-m-d H:i:s', $tsNow - (60*10));
 $timeNow = date('Y-m-d H:i:s', $tsNow);
 #create array to store points in and set of query
 $pointarr = '';
-$sql = "select id, lon, lat, curtime from Data where curtime > '$timeBefore' and curtime < '$timeNow';";
-$res = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
+$sql = $db -> select("select id, lon, lat, curtime from Data where curtime > '$timeBefore' and curtime < '$timeNow';");
 
 #fill array with points
-if ($res) {
+if ($sql) {
     while ($data = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
         $pointarr = $pointarr.$data['id'].', '.$data['lat'].', '.$data['lon'].', '.$data['curtime']."\n";
     }
@@ -22,3 +19,4 @@ if ($res) {
 } else {
     echo 'Could not retrieve records';
 }
+ ?>
