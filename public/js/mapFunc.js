@@ -68,11 +68,11 @@ function processData(data) {
     }
     truckRoute.push(line[1] + ',' + line[2]);
   }
-  //get snap-to-road points according to the points provide and plot
+  //get snap-to-road points according to the points provided and plot
   for (var ii = 0; ii < plowRoute.length; ii++) {
-    var start = 0,
-      end = 100;
+    var start = 0,end = 100;
     var segment = [];
+    snappedCoordinates = [];
     while (start < plowRoute[ii].length) {
       if (end > plowRoute[ii].length) {
         end = plowRoute[ii].length;
@@ -80,35 +80,51 @@ function processData(data) {
       segment = plowRoute[ii].slice(start, end);
       start += 99;
       end = start + 100;
-      $.get('https://roads.googleapis.com/v1/snapToRoads', {
-        interpolate: true,
-        key: 'AIzaSyA7Ka8FkNjbSUzPyg0OfMqDqHw257cbWSQ',
-        path: segment.join('|')
-      }, function(data) {
-        var snappedCoordinates = [];
-        for (var i = 0; i < data.snappedPoints.length; i++) {
-          var latlng = new google.maps.LatLng(
-            data.snappedPoints[i].location.latitude,
-            data.snappedPoints[i].location.longitude);
-          snappedCoordinates.push(latlng);
-        }
-        var plowPath = new google.maps.Polyline({
-          path: snappedCoordinates,
-          strokeColor: color.pop(),
-          strokeOpacity: 1.0,
-          strokeWeight: 4,
-          icons: [{
-            icon: lineSymbol,
-            offset: '100%'
-          }],
-        });
-        plowPath.setMap(map);
-        animateCircle(plowPath);
-      });
+      var response=snapToRoad(segment);
+      processSnapToRoadResponse(response);
     }
+    drawSnappedPolyline(color[ii]);
   }
 }
-
+function snapToRoad(segment){
+  var result;
+  $.ajax({
+    url:"https://roads.googleapis.com/v1/snapToRoads",
+    type:"get",
+    data:{
+      interpolate: true,
+      key: 'AIzaSyA7Ka8FkNjbSUzPyg0OfMqDqHw257cbWSQ',
+      path: segment.join('|')
+    },
+    async:false,
+    success:function(data){
+      result=data;
+    }
+  });
+  return result;
+}
+function processSnapToRoadResponse(data){
+  for (var i = 0; i < data.snappedPoints.length; i++) {
+    var latlng = new google.maps.LatLng(
+      data.snappedPoints[i].location.latitude,
+      data.snappedPoints[i].location.longitude);
+    snappedCoordinates.push(latlng);
+  }
+}
+function drawSnappedPolyline(color){
+  var plowPath = new google.maps.Polyline({
+    path: snappedCoordinates,
+    strokeColor: color,
+    strokeOpacity: 1.0,
+    strokeWeight: 4,
+    icons: [{
+      icon: lineSymbol,
+      offset: '100%'
+    }],
+  });
+  plowPath.setMap(map);
+  animateCircle(plowPath);
+}
 //parse and split data by comma, and take care of commas in quotes/
 function parseRow(str) {
   var insideQuote = false,
