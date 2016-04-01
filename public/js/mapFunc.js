@@ -82,7 +82,7 @@ function processData(data) {
       end = start + 100;
       $.get('https://roads.googleapis.com/v1/snapToRoads', {
         interpolate: true,
-        key: 'AIzaSyA7Ka8FkNjbSUzPyg0OfMqDqHw257cbWSQ',
+        key: 'AIzaSyB9iQXncNMthIbjKA6RMqRlLcNXyI1z7r4',
         path: segment.join('|')
       }, function(data) {
         var snappedCoordinates = [];

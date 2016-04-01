@@ -86,24 +86,24 @@ $(function () {
 
         //loads the relevant script given checkbox values submitted
         if (checkedItems[0] == "Snow Cleared Paths: No Sub-Layers") {
-          console.log("SnoCleared");
+          // console.log("SnoCleared");
           initMap();
-          $('.timeFilters').show();
           clearStyling();
         }
         if (checkedItems[0] == "With Current Traffic Layer") {
-          console.log("traffic");
+          // console.log("traffic");
           initMap('traffic');
           clearStyling();
         }
         if (checkedItems[0] == "With Bike Path Layer"){
-          console.log("bike");
+          // console.log("bike");
           initMap('bike');
           clearStyling();
         }
     });
 
     function clearStyling() {
+      $('.timeFilters').show();
       $('.list-group-item').removeClass('list-group-item-primary').removeClass('active').addClass('disabled').attr('cursor', 'not allowed');
       $('#get-checked-data').removeClass('btn-primary').addClass('btn-danger').html('Clear').attr('onclick', 'clearList()');
       $('.state-icon').removeClass('glyphicon-check').addClass('glyphicon-unchecked');
