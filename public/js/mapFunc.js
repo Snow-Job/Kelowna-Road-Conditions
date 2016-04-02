@@ -1,4 +1,3 @@
-// window.onload = loadScript();
 
 var plowRoute = [];
 var truckRoute = [];
@@ -8,7 +7,7 @@ var color = ["#FF6600", "#FF3300", "#FF0000", "#CC3300", "#CC0033", "#FF3366",
   "#FFCC33", "#FF9900", "#FFCC00", "#CC9900", "#99CC00", "#CCFF00"
 ];
 
-function initMap(layer) {
+function initMap(layer,range) {
   var mapDiv = document.getElementById('map');
   map = new google.maps.Map(mapDiv, {
     center: {
@@ -19,8 +18,9 @@ function initMap(layer) {
   });
   //query database and process it
   $.ajax({
-    type: "GET",
+    type: "POST",
     url: "../application/model/dataUpdate.php",
+    data:{action:'call_this', value: range},
     success: function(data) {
       processData(data);
     }
@@ -93,7 +93,7 @@ function snapToRoad(segment){
     type:"get",
     data:{
       interpolate: true,
-      key: 'AIzaSyA7Ka8FkNjbSUzPyg0OfMqDqHw257cbWSQ',
+      key: 'AIzaSyB9iQXncNMthIbjKA6RMqRlLcNXyI1z7r4',
       path: segment.join('|')
     },
     async:false,
@@ -145,13 +145,6 @@ function parseRow(str) {
   entries.push(entry.join(''));
   return entries;
 }
-
-// function loadScript() {
-//   var script = document.createElement("script");
-//   script.type = "text/javascript";
-//   script.src = "http://maps.googleapis.com/maps/api/js?callback=initMap";
-//   document.head.appendChild(script);
-// }
 
 /**
  * Animate an icon along a polyline

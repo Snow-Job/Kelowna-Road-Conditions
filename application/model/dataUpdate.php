@@ -1,5 +1,6 @@
 <?php
 
+$range = $_POST['value'];
 $mysqli = connect('cosc304.ok.ubc.ca','mjoseph','15057136','db_mjoseph');
 
 function connect($host, $user, $pw, $db_name)
@@ -10,7 +11,7 @@ function connect($host, $user, $pw, $db_name)
 #get range of times to query on db based on current time of day then format
 date_default_timezone_set('PST8PDT');
 $tsNow = mktime(date('H'), date('i'), date('s'), 12, 27, 2015);
-$timeBefore = date('Y-m-d H:i:s', $tsNow - (60*10));
+$timeBefore = date('Y-m-d H:i:s', $tsNow - (60*$range));
 $timeNow = date('Y-m-d H:i:s', $tsNow);
 #create array to store points in and set of query
 $pointarr = '';

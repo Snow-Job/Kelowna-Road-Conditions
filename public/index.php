@@ -17,7 +17,7 @@
   <script src="js/mapFunc.js"></script>
   <!-- header resize on scroll function -->
   <script src="js/headerScroll.js"></script>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9iQXncNMthIbjKA6RMqRlLcNXyI1z7r4"></script>
   <!-- Include jQuery -->
   <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
   <!-- checkbox list javascript functions -->
@@ -59,30 +59,24 @@
                 <div class="col-xs-12 col-sm-12 col-md-4">
                   <h3 class="text-center" style="color:white">Select a Filter Below:</h3>
                   <br>
-                  <div class="well" style="max-height: 800px; overflow: auto;" id="sideContent">
+                  <div class="well" style="max-height: 800px; overflow: auto; margin:0 auto;" id="sideContent">
                     <br>
-                    <ul id="check-list-box" class="list-group checked-list-box" >
-                      <li class="list-group-item" >Snow Cleared Paths: No Sub-Layers</li>
-                      <!-- <li class="list-group-item">Snow: Not Cleared</li> -->
-                      <div class="col-xs-6 col-sm-6 col-md-6" style="padding:0;">
-                      <li class="list-group-item">With Current Traffic Layer</li>
+                      <button class="btn col-xs-12 get-checked-data" id="snow" onclick="showRoutes('snow')">Snow Plow Routes</button>
+                      <button class="btn col-xs-12 get-checked-data" id="traffic" onclick="showRoutes('traffic')">Snow Plow Routes with Current Traffic</button>
+                      <button class="btn col-xs-12 get-checked-data" id="bike" onclick="showRoutes('bike')">Snow Plow Routes with Bike Paths</button>
+                      <div class="timeFilters" style="text-align: center; display: none;">
+                        <div class="row" style="color: red">
+                          Please select a time range:
+                        </div>
+
+                        <button type="button" id="10" name="past10" class="btn btn-success" onclick="timeQuery(10)">Past 10 Minutes</button>
+                        <button type="button" id="30" name="past30" class="btn btn-success" onclick="timeQuery(30)">Past 30 Minutes</button>
+                        <button type="button" id="60" name="past60" class="btn btn-success" onclick="timeQuery(60)">Past 1 Hour</button>
+                        <button class="btn btn-danger col-xs-12" id="clear" onclick="clearMap()">Clear Map</button>
                       </div>
-                      <!-- <li class="list-group-item">Construction: Current Projects</li> -->
-                        <div class="col-xs-6 col-sm-6 col-md-6" style="padding-left:0; padding-right:0;">
-                      <li class="list-group-item">With Bike Path Layer</li>
-                    </div>
-                    </ul>
-                    <br />
-                    <br />
-                    <br />
-                    <button class="btn btn-primary col-xs-12" id="get-checked-data">Update</button>
+
                     <br>
                     <br>
-                    <div class="timeFilters" style="text-align: center; display: none;">
-                      <button type="button" name="pastHour" class="btn btn-success" onclick="timeQuery(60)">Past Hour</button>
-                      <button type="button" name="past2Hour" class="btn btn-success" onclick="timeQuery(120)">Past 2 Hours</button>
-                      <button type="button" name="past3Hour" class="btn btn-success" onclick="timeQuery(180)">Past 3 Hours</button>
-                    </div>
                     <br />
                     <br />
                     <h3 class="text-center" style="color:black">Legend:</h3>

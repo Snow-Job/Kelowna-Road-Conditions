@@ -78,6 +78,17 @@ a:hover {
   color: #0793e2;
 }
 
+.well > button {
+  margin-bottom:10px;
+  background-color: #4486b1;
+  color: white;
+}
+
+button#clear {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
 /* =Template
 -------------------------------------------------------------- */
 
