@@ -75,21 +75,21 @@
                         <button class="btn btn-danger col-xs-12" id="clear" onclick="clearMap()">Clear Map</button>
                       </div>
 
-                    <br>
-                    <br>
-                    <br />
-                    <br />
-                    <h3 class="text-center" style="color:black">Legend:</h3>
-                    <br>
-                    <ul class="list-group">
-                      <li class="list-group-item"><img src="images/greenLine.png">&nbsp Snow - Cleared Roads</li>
-                      <!-- <li class="list-group-item"><img src="images/redLine.png">&nbsp Snow - Not Cleared</li> -->
-                      <li class="list-group-item"><img src="images/blueLine.png">&nbsp Construction - Road Closed</li>
-                      <!-- <li class="list-group-item"><img src="images/pinkLine.png">&nbsp Construction - Current Projects</li> -->
-                      <li class="list-group-item"><img src="images/yellowLine.png">&nbsp Events - Road Closed</li>
                       <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+
+                    <!-- <h3 class="text-center" style="color:black">Legend:</h3> -->
+                    <!-- <ul class="list-group"> -->
+                      <!-- <li class="list-group-item"><img src="images/greenLine.png">&nbsp Snow - Cleared Roads</li>
+
+                      <li class="list-group-item"><img src="images/blueLine.png">&nbsp Construction - Road Closed</li>
+
+                      <li class="list-group-item"><img src="images/yellowLine.png">&nbsp Events - Road Closed</li> -->
                       <span style="display: block !important; width: 320px; text-align: center; font-family: sans-serif; font-size: 12px; margin: 20px auto 0 auto;"><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:00000.1.71203&bannertypeclick=wu_clean2day" title="Kelowna, British Columbia Weather Forecast" target="_blank"><img src="http://weathersticker.wunderground.com/weathersticker/cgi-bin/banner/ban/wxBanner?bannertype=wu_clean2day_metric_cond&airportcode=CYLW&ForcedCity=Kelowna&ForcedState=Canada&wmo=71203&language=EN" alt="Find more about Weather in Kelowna, CA" width="300" /></a><br><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:00000.1.71203&bannertypeclick=wu_clean2day" title="Get latest Weather Forecast updates" style="font-family: sans-serif; font-size: 12px; color: #000;" target="_blank">Click for weather forecast</a></span>
-                    </ul>
+                    <!-- </ul> -->
                   </div>
                   <pre id="display-json"></pre>
                 </div>

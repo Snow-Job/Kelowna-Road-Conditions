@@ -18,9 +18,9 @@ function timeQuery(range) {
 }
 
 function clearMap() {
-  $('#'+type).css('background-color', '#4486b1');
-  initMap2();
-  $('.timeFilters').hide();
-  $('.get-checked-data:not(#'+type+')').prop('disabled', false);
+  // $('#'+type).css('background-color', '#4486b1');
+  // initMap2();
+  // $('.timeFilters').hide();
+  // $('.get-checked-data:not(#'+type+')').prop('disabled', false);
   location.reload();
 }

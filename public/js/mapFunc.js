@@ -163,5 +163,5 @@ function animateCircle(polyline) {
     var icons = polyline.get('icons') || defaultIcon;
     icons[0].offset = (count / 2) + '%';
     polyline.set('icons', icons);
-  }, 20);
+  }, 60);
 }
