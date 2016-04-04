@@ -1,5 +1,4 @@
-/* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
--------------------------------------------------------------- */
+/*written by jamesr*/
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
   background: transparent;
@@ -33,8 +32,6 @@ del {
   text-decoration: line-through;
 }
 
-/* tables still need 'cellspacing="0"' in the markup */
-
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -42,13 +39,6 @@ table {
 a img {
   border: none;
 }
-
-/* =Scss Variables
--------------------------------------------------------------- */
-
-
-/* =Global
--------------------------------------------------------------- */
 
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
@@ -89,9 +79,6 @@ button#clear {
   margin-top: 20px;
 }
 
-/* =Template
--------------------------------------------------------------- */
-
 #wrapper {
   width: 100%;
   margin: 0 auto;
@@ -128,9 +115,6 @@ section.color {
   color: black;
 }
 
-/* =Info Bar
--------------------------------------------------------------- */
-
 #info-bar {
   background-color: #3cb5f9;
 }
@@ -157,9 +141,6 @@ section.color {
   float: right;
   text-align: right;
 }
-
-/* =Header
--------------------------------------------------------------- */
 
 header {
   width: 100%;
@@ -225,13 +206,6 @@ header.smaller nav button {
   /*line-height: 75px;*/
 }
 
-/* =Footer
--------------------------------------------------------------- */
-
-
-/* =Extras
--------------------------------------------------------------- */
-
 .clearfix:after {
   visibility: hidden;
   display: block;
@@ -240,12 +214,8 @@ header.smaller nav button {
   height: 0;
 }
 
-/* =Media Queries
--------------------------------------------------------------- */
-
 @media all and (max-width: 660px) {
-  /* =Header
-  -------------------------------------------------------------- */
+
   header h1#logo {
     display: block;
     float: none;
@@ -308,8 +278,6 @@ header.smaller nav button {
   color: rgb(255, 255, 255);
   background-color: rgb(66, 139, 202);
 }
-
-/* DEMO ONLY - REMOVES UNWANTED MARGIN */
 
 .well .list-group {
   margin-bottom: 0px;
@@ -446,8 +414,7 @@ header.smaller nav button {
   float: right;
 }
 
-/* If you don't want the footer to be responsive, remove these media queries */
-
+/*for responsive footer*/
 @media (max-width: 1000px) {
   .footer-distributed {
     font: bold 14px sans-serif;
@@ -487,15 +454,7 @@ header.smaller nav button {
 
 #map.basic {
   height: 800px;
-  /*position: absolute;*/
   top: 0;
   left: 0;
   width: 100% !important;
-  /*height: 100% !important;*/
 }
-/*#map.fullscreen {
-  height: 800px;
-  top: 0;
-  left: 0;
-  width: 100% !important;
-}*/

@@ -1,4 +1,3 @@
-
 var plowRoute = [];
 var truckRoute = [];
 var color = ["#FF6600", "#FF3300", "#FF0000", "#CC3300", "#CC0033", "#FF3366",
@@ -7,7 +6,14 @@ var color = ["#FF6600", "#FF3300", "#FF0000", "#CC3300", "#CC0033", "#FF3366",
   "#FFCC33", "#FF9900", "#FFCC00", "#CC9900", "#99CC00", "#CCFF00"
 ];
 
-function initMap(layer,range) {
+/**
+ * initializes the map with the routes and time range dependent on the parameter values
+ * @method initMap
+ * @param  {[string]} layer [the layer the user selected to view]
+ * @param  {[int]} range [the time range query the user selected]
+ * @author nicky jamesr
+ */
+function initMap(layer, range) {
   var mapDiv = document.getElementById('map');
   map = new google.maps.Map(mapDiv, {
     center: {
@@ -16,11 +22,16 @@ function initMap(layer,range) {
     },
     zoom: 12
   });
+  //adds full screen functionality
+  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(FullScreenControl(map));
   //query database and process it
   $.ajax({
     type: "POST",
     url: "../application/model/dataUpdate.php",
-    data:{action:'call_this', value: range},
+    data: {
+      action: 'call_this',
+      value: range
+    },
     success: function(data) {
       processData(data);
     }
@@ -35,7 +46,6 @@ function initMap(layer,range) {
     var bikeLayer = new google.maps.BicyclingLayer();
     bikeLayer.setMap(map);
   }
-
 }
 
 /**
@@ -51,15 +61,22 @@ function initMap2() {
     },
     zoom: 12
   });
-
+  //adds full screen functionality
+  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(FullScreenControl(map));
 }
 
+/**
+ * processes the lat/lng coords returned from the ajax call in initMap()
+ * @method processData
+ * @param  {[type]}    data [the lat/lng coords from the database]
+ * @author nicky
+ */
 function processData(data) {
   //get the latitude and longitude
   var allDataLines = data.split(/\r\n|\n/);
   var temp = parseRow(allDataLines[0]);
   var id = temp[0];
-  for (var i = 0; i < allDataLines.length; i++) { // get data from line 10 to line 19
+  for (var i = 0; i < allDataLines.length; i++) {
     var line = parseRow(allDataLines[i]);
     if (id !== line[0]) {
       id = line[0];
@@ -70,7 +87,8 @@ function processData(data) {
   }
   //get snap-to-road points according to the points provided and plot
   for (var ii = 0; ii < plowRoute.length; ii++) {
-    var start = 0,end = 100;
+    var start = 0,
+      end = 100;
     var segment = [];
     snappedCoordinates = [];
     while (start < plowRoute[ii].length) {
@@ -80,30 +98,32 @@ function processData(data) {
       segment = plowRoute[ii].slice(start, end);
       start += 99;
       end = start + 100;
-      var response=snapToRoad(segment);
+      var response = snapToRoad(segment);
       processSnapToRoadResponse(response);
     }
     drawSnappedPolyline(color[ii]);
   }
 }
-function snapToRoad(segment){
+
+function snapToRoad(segment) {
   var result;
   $.ajax({
-    url:"https://roads.googleapis.com/v1/snapToRoads",
-    type:"get",
-    data:{
+    url: "https://roads.googleapis.com/v1/snapToRoads",
+    type: "get",
+    data: {
       interpolate: true,
       key: 'AIzaSyB9iQXncNMthIbjKA6RMqRlLcNXyI1z7r4',
       path: segment.join('|')
     },
-    async:false,
-    success:function(data){
-      result=data;
+    async: false,
+    success: function(data) {
+      result = data;
     }
   });
   return result;
 }
-function processSnapToRoadResponse(data){
+
+function processSnapToRoadResponse(data) {
   for (var i = 0; i < data.snappedPoints.length; i++) {
     var latlng = new google.maps.LatLng(
       data.snappedPoints[i].location.latitude,
@@ -111,7 +131,8 @@ function processSnapToRoadResponse(data){
     snappedCoordinates.push(latlng);
   }
 }
-function drawSnappedPolyline(color){
+
+function drawSnappedPolyline(color) {
   var plowPath = new google.maps.Polyline({
     path: snappedCoordinates,
     strokeColor: color,
@@ -146,9 +167,19 @@ function parseRow(str) {
   return entries;
 }
 
+// Symbol that gets animated along the polyline
+var lineSymbol = {
+  path: google.maps.SymbolPath.CIRCLE,
+  scale: 2,
+  strokeColor: '#005db5',
+  strokeWidth: '#005db5',
+  strokeWeight: 5
+};
+
 /**
- * Animate an icon along a polyline
- * @author James Rogers
+ * Animate an icon along a polyline, adapted from an example provided by Google:
+ * https://developers.google.com/maps/documentation/roads/inspector
+ * @author jamesr / Google
  * @param {Object} polyline The line to animate the icon along
  */
 function animateCircle(polyline) {
@@ -163,5 +194,5 @@ function animateCircle(polyline) {
     var icons = polyline.get('icons') || defaultIcon;
     icons[0].offset = (count / 2) + '%';
     polyline.set('icons', icons);
-  }, 60);
+  }, 90);
 }
