@@ -23,13 +23,13 @@ $timeBefore = date('Y-m-d H:i:s', $tsNow - (60 * $range));
 $timeNow = date('Y-m-d H:i:s', $tsNow);
 #create array to store points in and set of query
 $pointarr = '';
-$sql = "select id, lon, lat, curtime from Data where curtime > '$timeBefore' and curtime < '$timeNow';";
+$sql = "select id, lon, lat, curtime, comment from Data where curtime > '$timeBefore' and curtime < '$timeNow';";
 $res = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
 
 #fill array with points
 if ($res) {
     while ($data = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
-        $pointarr = $pointarr.$data['id'].', '.$data['lat'].', '.$data['lon'].', '.$data['curtime']."\n";
+        $pointarr = $pointarr.$data['id'].', '.$data['lat'].', '.$data['lon'].', '.$data['curtime'].', '.$data['comment']."\n";
     }
     echo $pointarr;
 } else {

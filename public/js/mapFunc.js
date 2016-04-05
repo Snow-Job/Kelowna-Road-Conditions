@@ -1,3 +1,5 @@
+var truckID=[];
+var truckModel=[];
 var plowRoute = [];
 var truckRoute = [];
 var color = ["#FF6600", "#FF3300", "#FF0000", "#CC3300", "#CC0033", "#FF3366",
@@ -76,10 +78,14 @@ function processData(data) {
   var allDataLines = data.split(/\r\n|\n/);
   var temp = parseRow(allDataLines[0]);
   var id = temp[0];
+  truckModel.push(temp[4]);
+  truckID.push(id);
   for (var i = 0; i < allDataLines.length; i++) {
     var line = parseRow(allDataLines[i]);
     if (id !== line[0]) {
       id = line[0];
+      truckID.push(id);
+      truckModel.push(line[4]);
       plowRoute.push(truckRoute);
       truckRoute = [];
     }
@@ -90,21 +96,25 @@ function processData(data) {
     var start = 0,
       end = 100;
     var segment = [];
-    snappedCoordinates = [];
-    while (start < plowRoute[ii].length) {
+    var snappedCoordinates = [];
+    var contentString='Plow ID: '+truckID[ii]+'<br>Plow model: '+truckModel[ii];
+    var infoWindow=new google.maps.InfoWindow({
+      content:contentString
+    });
+    while (start < plowRoute[ii].length-1) {
       if (end > plowRoute[ii].length) {
         end = plowRoute[ii].length;
       }
       segment = plowRoute[ii].slice(start, end);
-      start += 99;
+      start = end-1;
       end = start + 100;
       var response = snapToRoad(segment);
-      processSnapToRoadResponse(response);
+      processSnapToRoadResponse(response,snappedCoordinates);
     }
-    drawSnappedPolyline(color[ii]);
+    drawSnappedPolyline(snappedCoordinates,color[ii],infoWindow);
   }
 }
-
+//The actual snap-to-road api
 function snapToRoad(segment) {
   var result;
   $.ajax({
@@ -122,8 +132,8 @@ function snapToRoad(segment) {
   });
   return result;
 }
-
-function processSnapToRoadResponse(data) {
+//latitude and longitude values of the snapped points are fetched into an array
+function processSnapToRoadResponse(data,snappedCoordinates) {
   for (var i = 0; i < data.snappedPoints.length; i++) {
     var latlng = new google.maps.LatLng(
       data.snappedPoints[i].location.latitude,
@@ -131,8 +141,8 @@ function processSnapToRoadResponse(data) {
     snappedCoordinates.push(latlng);
   }
 }
-
-function drawSnappedPolyline(color) {
+//polylines are drawn using the snapped point coordinates
+function drawSnappedPolyline(snappedCoordinates,color,info) {
   var plowPath = new google.maps.Polyline({
     path: snappedCoordinates,
     strokeColor: color,
@@ -143,7 +153,12 @@ function drawSnappedPolyline(color) {
       offset: '100%'
     }],
   });
+  var midPoint=snappedCoordinates[parseInt(snappedCoordinates.length/2)];
   plowPath.setMap(map);
+  plowPath.addListener('click',function(){
+    info.setPosition(midPoint);
+    info.open(map);
+  })
   animateCircle(plowPath);
 }
 //parse and split data by comma, and take care of commas in quotes/
