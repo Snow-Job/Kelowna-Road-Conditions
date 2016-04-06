@@ -1,6 +1,6 @@
 <!-- written by jamesr -->
 
-<footer class="footer-distributed">
+<footer class="footer-distributed" id="footer">
   <div style="width: 80%; margin: 0 auto 0 auto;">
     <div class="footer-left">
       <img src="images/logo.png" style="width: 100px; "></img>

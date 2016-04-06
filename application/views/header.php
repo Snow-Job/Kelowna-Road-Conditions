@@ -26,7 +26,7 @@
   <!-- Latest compiled JavaScript -->
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="js/listFunc.js"></script>
-  <script src="js/mapFunc.js"></script>
+
   <script src="js/fullScreenMaps.js" type="text/javascript"></script>
   <script>
 
@@ -41,13 +41,13 @@
     </h1>
     <nav>
       <a href="http://www.kelowna.ca/">
-        <button type="button" class="btn btn-default" style="background-color: #fdb813; border-color:#fdb813; color: white;"><b>Home</b></button>
+        <button type="button" class="btn btn-default" style="background-color: #fdb813; border-color:#fdb813; color: white;" id="homeButton"><b>Home</b></button>
       </a>
       <a href="http://www.kelowna.ca/CM/Page67.aspx">
-        <button type="button" class="btn btn-default" style="background-color: #fdb813; border-color:#fdb813; color: white;"><b>About</b></button>
+        <button type="button" class="btn btn-default" style="background-color: #fdb813; border-color:#fdb813; color: white;" id="aboutButton"><b>About</b></button>
       </a>
       <a href="http://www.kelowna.ca/CM/Page14.aspx">
-        <button type="button" class="btn btn-default" style="background-color: #becc26; border-color:#becc26; color: white;"><b>Contact Us&nbsp</b><span class="glyphicon glyphicon-earphone"></span></button>
+        <button type="button" class="btn btn-default" style="background-color: #becc26; border-color:#becc26; color: white;" id="contactButton"><b>Contact Us&nbsp</b><span class="glyphicon glyphicon-earphone"></span></button>
       </a>
     </nav>
   </div>

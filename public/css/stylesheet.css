@@ -54,6 +54,37 @@ body {
   line-height: 1.8;
 }
 
+#weatherWidget{
+  margin-top:30px;
+}
+
+@media (max-width: 1024px) {
+  #navTxt{
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  #homeButton,#aboutButton,#contactButton,#firstBlurb,#notesBlurb,#footer{
+    display: none;
+  }
+  #weatherWidget{
+    width: 200px ;
+  }
+  #widgetCont{
+    width: 200px ;
+  }
+  #map{
+    max-height: 400px !important;
+  }
+  #navigate{
+    margin-top: 20px;
+  }
+  .container{
+    width: 100% ;
+  }
+}
+
 /* Headings */
 
 h1, h2, h3, h4, h5, h6 {

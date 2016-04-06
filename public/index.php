@@ -6,7 +6,7 @@
     <div id="wrapper">
       <div id="main">
         <div id="content">
-          <section>
+          <section id="firstBlurb">
             <div class="container">
               <br>
               <br>
@@ -17,7 +17,7 @@
           <section class="color">
             <div class="container" style="margin-top:20px;">
               <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
                   <h3 class="text-center" style="color:white">Select a Filter Below:</h3>
                   <br>
                   <div class="well" style="max-height: 800px; overflow: auto; margin:0 auto;" id="sideContent">
@@ -34,18 +34,13 @@
                       <button type="button" id="60" name="past60" class="btn btn-success" onclick="timeQuery(60)">Past 1 Hour</button>
                       <button class="btn btn-danger col-xs-12" id="clear" onclick="clearMap()">Clear Map</button>
                     </div>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
                     <!-- the weather widget app -->
-                    <span style="display: block !important; width: 320px; text-align: center; font-family: sans-serif; font-size: 12px; margin: 20px auto 0 auto;"><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:00000.1.71203&bannertypeclick=wu_clean2day" title="Kelowna, British Columbia Weather Forecast" target="_blank"><img src="http://weathersticker.wunderground.com/weathersticker/cgi-bin/banner/ban/wxBanner?bannertype=wu_clean2day_metric_cond&airportcode=CYLW&ForcedCity=Kelowna&ForcedState=Canada&wmo=71203&language=EN" alt="Find more about Weather in Kelowna, CA" width="300" /></a><br><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:00000.1.71203&bannertypeclick=wu_clean2day" title="Get latest Weather Forecast updates" style="font-family: sans-serif; font-size: 12px; color: #000;" target="_blank">Click for weather forecast</a></span>
+                    <span style="display: block !important; text-align: center; font-family: sans-serif; font-size: 12px; margin: 20px auto 0 auto;" id="widgetCont"><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:00000.1.71203&bannertypeclick=wu_clean2day" title="Kelowna, British Columbia Weather Forecast" target="_blank"><img src="http://weathersticker.wunderground.com/weathersticker/cgi-bin/banner/ban/wxBanner?bannertype=wu_clean2day_metric_cond&airportcode=CYLW&ForcedCity=Kelowna&ForcedState=Canada&wmo=71203&language=EN" alt="Find more about Weather in Kelowna, CA" id="weatherWidget" /></a><br><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:00000.1.71203&bannertypeclick=wu_clean2day" title="Get latest Weather Forecast updates" style="font-family: sans-serif; font-size: 12px; color: #000;" target="_blank">Click for weather forecast</a></span>
                   </div>
                   <pre id="display-json"></pre>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-8">
-                  <h3 class="text-center" style="color:white">Navigate the Google Map:</h3>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8" id="navigate">
+                  <h3 class="text-center" style="color:white" id="navTxt">Navigate the Google Map:</h3>
                   <br>
                   <div id="map" class="basic"></div>
                 </div>
@@ -54,7 +49,7 @@
             </div>
             <!-- container -->
           </section>
-          <section>
+          <section id="notesBlurb">
             <div class="container">
               <h1>Notes:</h1>
               <li>Filters may only be viewed one at a time. For example, it is not possible to select both the traffic and the bike route layers concurrently.</li>
@@ -67,7 +62,7 @@
       <!-- #main -->
     </div>
     <!-- /#wrapper -->
-
+<script src="js/mapFunc.js"></script>
     <?php include '../application/views/footer.php';?>
-    
+
   </body>
