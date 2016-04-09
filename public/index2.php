@@ -1,6 +1,6 @@
-<!-- written by jamesr -->
+<!-- added by spencerM -->
 
-<?php include '../application/views/header.php';?>
+<?php include '../application/views/header.php';  session_start();?>
 
   <body>
     <div id="wrapper">
@@ -23,8 +23,6 @@
                   <div class="well" style="max-height: 800px; overflow: auto; margin:0 auto;" id="sideContent">
                     <br>
                     <button class="btn col-xs-12 get-checked-data" id="snow" onclick="setLayer('snow')">Snow Plow Routes</button>
-                    <button class="btn col-xs-12 get-checked-data" id="traffic" onclick="setLayer('traffic')">Snow Plow Routes with Current Traffic</button>
-                    <button class="btn col-xs-12 get-checked-data" id="bike" onclick="setLayer('bike')">Snow Plow Routes with Bike Paths</button>
                     <div class="timeFilters" style="text-align: center; display: none;">
                       <div class="row" style="color: red">
                         Please select a time range:
@@ -66,3 +64,4 @@
     <?php include '../application/views/footer.php';?>
 
   </body>
+ </body>

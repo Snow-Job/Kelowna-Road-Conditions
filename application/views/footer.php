@@ -1,6 +1,6 @@
 <!-- written by jamesr -->
 
-<footer class="footer-distributed">
+<footer class="footer-distributed" id="footer">
   <div style="width: 80%; margin: 0 auto 0 auto;">
     <div class="footer-left">
       <img src="images/logo.png" style="width: 100px; "></img>
@@ -12,6 +12,9 @@
         <a href="https://twitter.com/cityofkelowna?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank"><i class="fa fa-twitter"></i></a>
         <a href="https://www.linkedin.com/company/city-of-kelowna" target="_blank"><i class="fa fa-linkedin"></i></a>
       </div>
+      <a href="userlogin.php">
+        <button type="button" class="btn btn-primary"  id="adminButton"><b>admin&nbsp</b></button>
+      </a>
     </div>
     <div class="footer-right">
       <p>Contact Us</p>

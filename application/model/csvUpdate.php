@@ -1,8 +1,10 @@
 <?php
+session_start();
 /**
- * connects to db, queries data provided by City
- * @author spencerm nicky jamesr
- * @return array of id/lat/lon/time/plowInfo data for selected time range
+ * connects to db, queries uploaded csv
+ * NOTE: only works with date/time in 24 hour format. didn't get around to making dataUpdate modular to handle CSV due to time constraints, hence the very similar code
+ * @author jamesr
+ * @return array of lon/lat/datetime data for selected time range
  */
 
 /**
@@ -10,6 +12,7 @@
  * @var [int]
  */
 $range = $_POST['value'];
+$table = $_SESSION['table'];
 
 $mysqli = connect('cosc304.ok.ubc.ca', 'mjoseph', '15057136', 'db_mjoseph');
 
@@ -25,13 +28,13 @@ $timeBefore = date('Y-m-d H:i:s', $tsNow - (60 * $range));
 $timeNow = date('Y-m-d H:i:s', $tsNow);
 #create array to store points in and set of query
 $pointarr = '';
-$sql = "select id, lon, lat, curtime, comment from Data where curtime > '$timeBefore' and curtime < '$timeNow';";
+$sql = "SELECT * from $table where Datestamp > '$timeBefore' and Datestamp < '$timeNow';";
 $res = mysqli_query($mysqli, $sql) or die(mysqli_error($mysqli));
 
 #fill array with points
 if ($res) {
     while ($data = mysqli_fetch_array($res, MYSQLI_ASSOC)) {
-        $pointarr = $pointarr.$data['id'].', '.$data['lat'].', '.$data['lon'].', '.$data['curtime'].', '.$data['comment']."\n";
+        $pointarr = $pointarr.$data['Longitude'].', '.$data['Latitude'].', '.$data['Datestamp']."\n";
     }
     echo $pointarr;
 } else {

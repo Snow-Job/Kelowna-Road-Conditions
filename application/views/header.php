@@ -19,21 +19,17 @@
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9iQXncNMthIbjKA6RMqRlLcNXyI1z7r4"></script>
   <!-- Include jQuery -->
   <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <!-- checkbox list javascript functions -->
   <!-- Include jBox -->
   <link href="http://code.jboxcdn.com/0.3.2/jBox.css" rel="stylesheet">
   <script src="http://code.jboxcdn.com/0.3.2/jBox.min.js"></script>
-  <!-- Latest compiled JavaScript -->
+  <!-- Bootstrap JS -->
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <!-- js functions for handling the list (button) queries -->
   <script src="js/listFunc.js"></script>
-  <script src="js/mapFunc.js"></script>
+  <!-- js for handling fullscreen mode -->
   <script src="js/fullScreenMaps.js" type="text/javascript"></script>
-  <script>
-
-  </script>
 </head>
 
-<!-- written by jamesr -->
 <header>
   <div class="headDiv clearfix">
     <h1 id="logo">
@@ -41,14 +37,15 @@
     </h1>
     <nav>
       <a href="http://www.kelowna.ca/">
-        <button type="button" class="btn btn-default" style="background-color: #fdb813; border-color:#fdb813; color: white;"><b>Home</b></button>
+        <button type="button" class="btn btn-default" style="background-color: #fdb813; border-color:#fdb813; color: white;" id="homeButton"><b>Home</b></button>
       </a>
       <a href="http://www.kelowna.ca/CM/Page67.aspx">
-        <button type="button" class="btn btn-default" style="background-color: #fdb813; border-color:#fdb813; color: white;"><b>About</b></button>
+        <button type="button" class="btn btn-default" style="background-color: #fdb813; border-color:#fdb813; color: white;" id="aboutButton"><b>About</b></button>
       </a>
       <a href="http://www.kelowna.ca/CM/Page14.aspx">
-        <button type="button" class="btn btn-default" style="background-color: #becc26; border-color:#becc26; color: white;"><b>Contact Us&nbsp</b><span class="glyphicon glyphicon-earphone"></span></button>
+        <button type="button" class="btn btn-default" style="background-color: #becc26; border-color:#becc26; color: white;" id="contactButton"><b>Contact Us&nbsp</b><span class="glyphicon glyphicon-earphone"></span></button>
       </a>
+
     </nav>
   </div>
 </header>
