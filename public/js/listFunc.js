@@ -1,6 +1,12 @@
-//the type of layer the user queries
+/**
+ * the type of layer the user queries
+ * @type {[string]}
+ */
 var type;
-//the time range of the query submitted by the user
+/**
+ * the time range of the query submitted by the user
+ * @type {[int]}
+ */
 var range;
 
 /**

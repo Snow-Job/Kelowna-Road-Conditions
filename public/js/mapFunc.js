@@ -27,17 +27,33 @@ function initMap(layer, range) {
   //adds full screen functionality
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(FullScreenControl(map));
   //query database and process it
-  $.ajax({
-    type: "POST",
-    url: "../application/model/dataUpdate.php",
-    data: {
-      action: 'call_this',
-      value: range
-    },
-    success: function(data) {
-      processData(data);
-    }
-  });
+  if (layer == 'traffic' || layer == 'bike' || layer =='snow') {
+    $.ajax({
+      type: "POST",
+      url: "../application/model/dataUpdate.php",
+      data: {
+        action: 'call_this',
+        value: range
+      },
+      success: function(data) {
+        // console.log(data);
+        processData(data);
+      }
+    });
+  } else {
+    $.ajax({
+      type: "POST",
+      url: "../application/model/csvUpdate.php",
+      data: {
+        action: 'call_that',
+        value: range
+      },
+      success: function(data) {
+        // console.log(data);
+        processData(data);
+      }
+    });
+  }
 
   if (layer == 'traffic') {
     var trafficLayer = new google.maps.TrafficLayer();
@@ -182,7 +198,11 @@ function parseRow(str) {
   return entries;
 }
 
-// Symbol that gets animated along the polyline
+/**
+ * Symbol that gets animated along the polyline
+ * @type {Object}
+ * @author jamesr
+ */
 var lineSymbol = {
   path: google.maps.SymbolPath.CIRCLE,
   scale: 2,
